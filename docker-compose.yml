@@ -1,0 +1,18 @@
+services:
+  toolkit-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: toolkit-app
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_SITE_URL=https://freelance-toolkit.com
+      - NEXT_PUBLIC_ADSENSE_PUB_ID=ca-pub-XXXXXXXXXXXXXXXX
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
