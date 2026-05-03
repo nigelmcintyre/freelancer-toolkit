@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   robots: { index: true, follow: true },
+  other: {
+    'google-adsense-account': 'ca-pub-1872557624162625',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
