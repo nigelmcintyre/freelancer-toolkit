@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -28,6 +29,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID ?? ''
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q55WKL6Q2W"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-Q55WKL6Q2W');
+        `}</Script>
+      </head>
       <body className="bg-white text-gray-900 antialiased">
         <AdsenseProvider pubId={pubId}>
           <Header />
